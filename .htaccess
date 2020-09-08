@@ -1,0 +1,18 @@
+ErrorDocument 400 /errors/bad-request.html
+ErrorDocument 401 /errors/auth-reqd.html
+ErrorDocument 403 /errors/forbid.html
+ErrorDocument 404 /errors/not-found.html
+ErrorDocument 500 /errors/server-err.html
+
+RewriteEngine on
+RewriteBase /
+
+# Rewrites all URLS without blog in them
+RewriteCond %{REQUEST_URI} !^/controller/
+
+# Rewrite all those to insert /folder
+RewriteRule ^(.*)$ /controller/$1.php [L]
+
+#Stop Directory Browsing
+Options All -Indexes
+
