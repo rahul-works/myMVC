@@ -1,4 +1,6 @@
 <?php 
+echo 'rahul';
+var_dump($_GET);
 
 require_once '../Service/TestService.php';
 
