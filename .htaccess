@@ -11,7 +11,8 @@ RewriteBase /
 RewriteCond %{REQUEST_URI} !^/controller/
 
 # Rewrite all those to insert /folder
-RewriteRule ^(.*)$ /controller/$1.php [L]
+# RewriteRule ^(.*)$ /controller/$1.php [L]
+RewriteRule ^login/([0-9a-zA-Z_]+)/([0-9]+)/([0-9]+) /controller/login.php?func=$1&p=$2&q=$3 [L]
 
 #Stop Directory Browsing
 Options All -Indexes
