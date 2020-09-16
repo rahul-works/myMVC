@@ -1,33 +1,13 @@
 <?php 
 
 namespace service;
+use data\login as DataLogin;
 class login { 
-    function get_service(){
-        $data = array();
-        $data['id'] = 999;
-        $data['status'] = '1';
-        $data['sync_status'] = '1';
-        $data['customer_id'] = 55555;
-        //echo json_encode($data); die;
-        return $data;
+    function get(){
+        include_once('../data/login.php');        
+        $login_d = new DataLogin;
+        $data = $login_d->get('rahul.thakur9985@gmail.com', '111111', 'encrpt_key');
+        return json_encode($data);
     }    
 }
-
-function get_service(){
-    $data = array();
-    $data['id'] = 999;
-    $data['status'] = '1';
-    $data['sync_status'] = '1';
-    $data['customer_id'] = 55555;
-    //echo json_encode($data); die;
-    return $data;
-}
-
-$functions = $arr = get_defined_functions()['user']; 
-
-if(!empty($_GET['function']) && in_array($_GET['function'], $functions)) {
-    $func = $_GET['function'];
-    $func();
-}
-
 ?>
