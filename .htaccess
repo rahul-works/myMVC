@@ -1,8 +1,8 @@
-ErrorDocument 400 /errors/bad-request.html
-ErrorDocument 401 /errors/auth-reqd.html
-ErrorDocument 403 /errors/forbid.html
-ErrorDocument 404 /errors/not-found.html
-ErrorDocument 500 /errors/server-err.html
+ErrorDocument 400 /error/bad-request.html
+ErrorDocument 401 /error/auth-reqd.html
+ErrorDocument 403 /error/forbid.html
+ErrorDocument 404 /error/not-found.html
+ErrorDocument 500 /error/server-err.html
 
 RewriteEngine on
 RewriteBase /
@@ -13,6 +13,8 @@ RewriteCond %{REQUEST_URI} !^/controller/
 # Rewrite all those to insert /folder
 # RewriteRule ^(.*)$ /controller/$1.php [L]
 RewriteRule ^login/([0-9a-zA-Z_]+)/([0-9]+)/([0-9]+) /controller/login.php?func=$1&p=$2&q=$3 [L]
+RewriteRule ^login/([0-9a-zA-Z_]+)/([0-9]+) /controller/login.php?func=$1&p=$2 [L]
+RewriteRule ^login /controller/login.php [L]
 
 #Stop Directory Browsing
 Options All -Indexes
