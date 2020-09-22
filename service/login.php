@@ -6,7 +6,8 @@ class login {
     function get(){
         include_once('../data/login.php');        
         $login_d = new DataLogin;
-        $data = $login_d->get('rahul.thakur9985@gmail.com', '111111', 'encrpt_key');
+        var_dump($_GET);
+        $data = $login_d->get($_GET['user_name'], $_GET['pass_word'], 'encrpt_key'); // key will get from a file or from a database
         return json_encode($data);
     }    
 }

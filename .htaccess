@@ -14,6 +14,7 @@ RewriteCond %{REQUEST_URI} !^/controller/
 # RewriteRule ^(.*)$ /controller/$1.php [L]
 RewriteRule ^login/([0-9a-zA-Z_]+)/([0-9]+)/([0-9]+) /controller/login.php?func=$1&p=$2&q=$3 [L]
 RewriteRule ^login/([0-9a-zA-Z_]+)/([0-9]+) /controller/login.php?func=$1&p=$2 [L]
+RewriteRule ^login/([0-9a-zA-Z_]+) /controller/login.php?func=$1 [QSA,L]
 RewriteRule ^login /controller/login.php [L]
 
 #Stop Directory Browsing
