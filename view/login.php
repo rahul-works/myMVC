@@ -9,13 +9,13 @@
 </head>
 <body>
     <div class="login-form">
-        <form action="/examples/actions/confirmation.php" method="post">
+        <form action="/login/record" method="get">
             <h2 class="text-center">Log in</h2>       
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Username" required="required">
+                <input type="text" class="form-control" placeholder="Username" required="required" name="user_name">
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" placeholder="Password" required="required">
+                <input type="password" class="form-control" placeholder="Password" required="required" name="pass_word">
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-block">Log in</button>

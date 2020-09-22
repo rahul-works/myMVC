@@ -5,12 +5,30 @@
 use service\login as ServiceLogin;
 
 $login = new Login("Login");
-if ($_GET['func'] === 'record')
-    $login->get_record(); 
-
-if (!isset($_GET['func'])) {
-    $login->get(); 
+echo $_SERVER['REQUEST_METHOD']; 
+//Switch statement
+switch ($_SERVER['REQUEST_METHOD']) {
+    case 'POST': // create
+      break;
+    case 'PUT': // update
+      break;
+    case 'GET': // read
+        if ($_GET['func'] === 'record')
+           $login->record(); 
+    
+        if (!isset($_GET['func'])) {
+            $login->get(); 
+        }
+      break;
+    case 'DELETE': // remove
+      break;
+    default:
+        $login->get(); 
+      break;
 }
+
+
+
 
 class Login {
     public $name;
@@ -25,7 +43,7 @@ class Login {
         ob_end_flush();
     }
 
-    function get_record() {
+    function record() { 
         // library 
         require_once('../library/Date_format.php');
         $date_format = new date_format();
@@ -36,6 +54,7 @@ class Login {
         $login_service = new ServiceLogin();
         $records = $login_service->get();
         print_r($records);
+        die;
     }
 }
 

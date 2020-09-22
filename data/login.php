@@ -21,6 +21,7 @@ class Login {
         try {
             // call the stored procedure
             $result = $this->mysqli->query("CALL login('$username', '$password', '$encrpt_key')");//$username, $password, $encrpt_key)");
+            echo "CALL login('$username', '$password', '$encrpt_key')";
             $data = array();
             while ($row = $result->fetch_object()) {                
                 $data[] = get_object_vars($row);
