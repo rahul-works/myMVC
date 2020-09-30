@@ -1,7 +1,7 @@
 <?php
 namespace data;
 
-class Login {
+class User {
     private $mysqli;
 
     function __construct() {
@@ -21,7 +21,7 @@ class Login {
         try {
             // call the stored procedure
             $result = $this->mysqli->query("CALL login('$username', '$password', '$encrpt_key')");//$username, $password, $encrpt_key)");
-            echo "CALL login('$username', '$password', '$encrpt_key')";
+            // echo "CALL login('$username', '$password', '$encrpt_key')";
             $data = array();
             while ($row = $result->fetch_object()) {                
                 $data[] = get_object_vars($row);
@@ -33,8 +33,15 @@ class Login {
         }
     }
 
-    function post() {
-        
+    function post($username, $password, $encrpt_key) {
+        try {
+            // call the stored procedure
+            $result = $this->mysqli->query("CALL user_cud('$username', '$password', 'I')");
+            $result->close();
+            return true;
+        } catch (\mysqli_sql_exception $e) {
+            throw $e;
+        }
     }
 
     function put() {
