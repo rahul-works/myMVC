@@ -12,13 +12,13 @@ class User {
                 exit();
             }
         } catch (\mysqli_sql_exception $e) {
-            throw $e;
-        }
-        
+            throw $e->getTrace();
+        }        
     }
 
-    public function get($username, $password, $encrpt_key) {
+    public function get($username, $password = '', $encrpt_key = '') {
         try {
+
             // call the stored procedure
             $result = $this->mysqli->query("CALL login('$username', '$password', '$encrpt_key')");//$username, $password, $encrpt_key)");
             // echo "CALL login('$username', '$password', '$encrpt_key')";
@@ -29,17 +29,22 @@ class User {
             $result->close();
             return $data;
         } catch (\mysqli_sql_exception $e) {
-            throw $e;
+            throw $e->getTrace();
         }
     }
 
     function post($username, $password, $encrpt_key) {
         try {
-            // call the stored procedure
-            $result = $this->mysqli->query("CALL user_cud('$username', '$password', 'I')");
-            $result->close();
-            return true;
+            $result = $this->mysqli->query("CALL user('$username', '$password', 'I')");
+            if ($result) {
+                $returnResponse = 'inserted';
+            } else {
+                $returnResponse = 'already_existed';
+            }
+            mysqli_free_result($result);
+            return $returnResponse;
         } catch (\mysqli_sql_exception $e) {
+            print_r($e);
             throw $e;
         }
     }
@@ -50,6 +55,10 @@ class User {
 
     function delete() {
         
+    }
+
+    function __destruct() {
+        mysqli_close($this->mysqli);
     }
 }
 ?>
