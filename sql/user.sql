@@ -1,3 +1,5 @@
+ALTER TABLE `user` ADD UNIQUE(`email`); 
+
 CREATE USER 'php'@'localhost' IDENTIFIED BY 'access';
 GRANT EXECUTE ON bikestores.* TO 'php'@'localhost';
 
@@ -23,7 +25,7 @@ SELECT * FROM login
 
 CALL login('rahul@test.com', '123123', 'encrypt_key');
 
--- Insert, Update, Delete
+-- Insert, Update, Delete, Read
 DELIMITER $$
 CREATE PROCEDURE user
   ( email       CHAR(100)
@@ -31,17 +33,24 @@ CREATE PROCEDURE user
   , p_oper      CHAR(1)
   )
 BEGIN
-    IF p_oper = 'I' THEN     
-      INSERT INTO user
-      SET email = email
-        , password = password;
-    ELSEIF p_oper = 'U' THEN      
-       UPDATE user
-       SET password = password
-       WHERE email = email;
-    ELSEIF p_oper = 'D' THEN
-       DELETE FROM user 
-       WHERE email = email;           
-    END IF;          
+  -- exit if the duplicate key occurs
+  DECLARE EXIT HANDLER FOR 1062
+  BEGIN
+    SELECT CONCAT('Duplicate key (',email,') occurred') AS message, 1 AS error;
+  END;
+
+  IF p_oper = 'I' THEN     
+    INSERT INTO user
+    SET email = email
+      , password = password;
+  ELSEIF p_oper = 'U' THEN      
+      UPDATE user
+      SET password = password
+      WHERE email = email;
+  ELSEIF p_oper = 'D' THEN
+      DELETE FROM user 
+      WHERE email = email;
+  END IF;          
 END$$
 DELIMITER ;
+
