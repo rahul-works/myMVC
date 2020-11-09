@@ -29,7 +29,7 @@ CALL login('rahul@test.com', '123123', 'encrypt_key');
 DELIMITER $$
 CREATE PROCEDURE user
   ( email       CHAR(100)
-  , password    CHAR(100)
+  , password    CHAR(100) DEFAULT NULL
   , p_oper      CHAR(1)
   )
 BEGIN
@@ -53,4 +53,24 @@ BEGIN
   END IF;          
 END$$
 DELIMITER ;
+
+// login 
+// select 
+// admin-user, customer-user, employee-user 
+// admin_view -> admin_user, company, signup-plan, company-plan, gateway-setting
+// select * from admin_view where id = xyz
+// view -> employee, company,  signup-plan, company-plan, gateway-setting
+// view -> customer-user, webpay-setting, company, customer, customer-address 
+
+//PROCEDURE email, password
+// check admin_view 
+// if not found check in employee-view
+// if not found check in temp-user-TABLE
+// return admin, temp, employee, <data>
+
+//job 
+// select -> conmpany_id, job_id
+// job-view -> job, customer
+// return data (where condn)
+
 

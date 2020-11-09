@@ -21,3 +21,17 @@ RewriteRule ^home /controller/home.php [L]
 #Stop Directory Browsing
 Options All -Indexes
 
+# index 
+# split 
+# search a file name in folder controller
+# if found file 
+#  search for function name + parameter split1, split2, split3 -> "function_name (****, ****)"
+
+
+# 21 Oct 
+    # remark : 
+    # both are good option: index + htaccess 
+    # htacces need to be efficient used curently its raw but working 
+    # index need to build from scratch : raw also need to be build
+
+

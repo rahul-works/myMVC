@@ -39,6 +39,7 @@ class User {
             if ($result) {
                 $returnResponse = 'inserted';
             } else {
+                // $result[0]['error']
                 $returnResponse = 'already_existed';
             }
             mysqli_free_result($result);
@@ -60,5 +61,16 @@ class User {
     function __destruct() {
         mysqli_close($this->mysqli);
     }
+
+    // read, create, update, delete
+
+    // getUser (<id-data>) -> <complete-data>
+
+    // createUser (<data>) 
+
+    // updateUser(id, <data>)
+
+    // deleteUser(id)
+
 }
 ?>
