@@ -4,6 +4,18 @@
 
 use service\user as ServiceUser;
 
+// ini_set("error_reporting", E_ALL | E_STRICT); // this is for warning 
+// ini_set('display_startup_errors',1); 
+ini_set('display_errors',1); // this is working 
+// error_reporting(-1);
+// try {
+//   echo $a;
+// } catch (Exception $e) {
+//   print_r($e);
+//   print_r(debug_backtrace());
+// }
+
+// die;
 $user = new User("user");
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'POST': // create
@@ -52,6 +64,7 @@ class User {
         // service
         include_once('../service/user.php');
         $user_service = new ServiceUser();
+        var_dump($_GET);
         $record = $user_service->get();
         
         echo $record;
@@ -80,11 +93,26 @@ class User {
     }
 
     function view() {
-      include_once('../core/template/view.php');
-      $view = new view('../view/data.php');
-      $view->name = 'Afflicto';
-      $view->bio = "I'm a geek.";
-      echo $view->render();
+      try {
+
+      // include_once('../core/template/view.php');
+      // $view = new view('../view/data.php');
+      // $view->name = 'Afflicto';
+      // $view->bio = "I'm a geek.";
+      // $view->age = 23;
+      // $head = new view('../view/header.php');
+      // $head->h1 = 'heading';
+      // $view->header = $head->render();
+      // $view->footer = (new view('../view/footer.php'))->render();
+      // echo $view->render();
+      var_dump($_GET);
+      } catch( Exception $e) {
+        echo '<pre>';
+        print_r($e);
+        print_r(debug_backtrace());
+    }
+      
+      
     }
 }
 

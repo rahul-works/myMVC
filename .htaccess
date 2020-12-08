@@ -12,12 +12,28 @@ RewriteCond %{REQUEST_URI} !^/controller/
 
 # Rewrite all those to insert /folder
 # RewriteRule ^(.*)$ /controller/$1.php [L]
-RewriteRule ^user/([0-9a-zA-Z_]+)/([0-9]+)/([0-9]+) /controller/user.php?func=$1&p=$2&q=$3 [L]
+
 RewriteRule ^user/([0-9a-zA-Z_]+)/([0-9]+) /controller/user.php?func=$1&p=$2 [L]
+RewriteRule ^user/([0-9a-zA-Z_]+)/([^/]+)/([^/]+) /controller/user.php?func=$1&p=$2&q=$3 [L]
 RewriteRule ^user/([0-9a-zA-Z_]+) /controller/user.php?func=$1 [QSA,L]
 RewriteRule ^user /controller/user.php [L]
+
 RewriteRule ^home /controller/home.php [L]
 
 #Stop Directory Browsing
 Options All -Indexes
+
+# index 
+# split 
+# search a file name in folder controller
+# if found file 
+#  search for function name + parameter split1, split2, split3 -> "function_name (****, ****)"
+
+
+# 21 Oct 
+    # remark : 
+    # both are good option: index + htaccess 
+    # htacces need to be efficient used curently its raw but working 
+    # index need to build from scratch : raw also need to be build
+
 

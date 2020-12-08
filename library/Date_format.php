@@ -37,6 +37,14 @@
         public function validate_date($date, $format = 'F d,Y'){
             $d = DateTime::createFromFormat($format, $date);
             return $d && $d->format($format) == $date;
-        }
+		}
+		
+		//Login + Job 
+		// global variable is required like messages
+		// for variable we will test with $GLOBALS['z'] which is PHP
+		// for function -> look for some design patterns
+		// for class -> look for some design patterns
+		// for interface -> design patern
+		// 
     }
 ?>
