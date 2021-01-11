@@ -21,4 +21,4 @@ How to commit the code:
 
 
 High level Design of the myMVC
-[![Design of MyMVC](https://imgur.com/a/mdRF3Wl)](https://rahul-thakur.medium.com/php-no-framework-7a30783992ad)
+[![Design of MyMVC](https://i.imgur.com/HpzGtPD.png)](https://rahul-thakur.medium.com/php-no-framework-7a30783992ad)
