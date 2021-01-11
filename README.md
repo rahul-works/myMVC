@@ -18,3 +18,7 @@ How to commit the code:
 5. Push it back to your repo
 6. Click the Compare & pull request button
 7. Click Create pull request to open a new pull request
+
+
+High level Design of the myMVC
+[![Design of MyMVC](https://imgur.com/a/mdRF3Wl)](https://rahul-thakur.medium.com/php-no-framework-7a30783992ad)
