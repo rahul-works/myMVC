@@ -1,0 +1,10 @@
+{
+    "require-dev": {
+        "phpunit/phpunit": "^7"
+    },
+    "autoload": {
+        "classmap": ["Data", "Service"],
+        "files": ["Views/Core/Engine.php", "UnitTestFiles/Test/constant.php", "Library/Date_format.php",
+                  "Config/Variables.php"]
+    }
+}
