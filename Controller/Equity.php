@@ -12,15 +12,16 @@ require_once (__DIR__ .'/../vendor/autoload.php');
 class Equity {
     
     public function __construct() {
-        if(!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
-            header('Location: /'); exit;
-        }
+        // if(!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
+        //     header('Location: /'); exit;
+        // }
     }
     
     public function __destruct() {}
 
     public function index() {
         $equity_s = new EquityS();
+        
         // $contentView = new View(__DIR__ .'/../Views/Equity/List');
         
         // $contentView->equity = $equity_s->get();
@@ -61,6 +62,7 @@ class Equity {
     }
     
     public function create(){
+        var_dump($_POST); die;
         // $contentView = new View('./Views/Equity/Create');
 
         // $dropdown_header = new View('./Views/Common/dropdown_header'); 

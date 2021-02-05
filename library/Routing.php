@@ -11,13 +11,13 @@ params: None
 */
 Router::add('/login', function() {
     if(isset($_POST['action']) && $_POST['action'] === 'service') {
-        include_once('Service/Login.php');
-        $object = new login;
+        include_once('Service/User.php');
+        $object = new User;
     } else {
-        include_once('Controller/Login.php');
-        $object = new login;
+        include_once('Controller/User.php');
+        $object = new User;
     }
-    $object->post();
+    $object->signin();
 }, 'POST');
 
 /*
@@ -27,9 +27,9 @@ method: Post
 params: None
 */
 Router::add('/logout', function() {
-    include_once('Controller/Login.php');
-    $object = new login;
-    $object->logout();
+    include_once('Controller/User.php');
+    $object = new User;
+    $object->signinout();
 }, 'GET');
 
 /*
@@ -38,9 +38,9 @@ function: index
 method: Get
 params: None
 */
-Router::add('/([a-z-0-9-_]*)', function($class) {
+Router::add('/([A-Z-a-z-0-9-_]*)', function($class) {
     if(empty($class)) { // Default Route
-        $class = 'Login';
+        $class = 'User';
     }
     include_once('Controller/'.$class.'.php');
     $object = new $class;
@@ -54,13 +54,13 @@ method: Get/POST/PUT/DELETE
 params: param1
 */
 
-Router::add('/([a-z-0-9-_]*)/([a-z-0-9-]*)', function($class, $param1) {
+Router::add('/([A-Z-a-z-0-9-_]*)/([A-Z-a-z-0-9-]*)', function($class, $param1) {
     include_once('Controller/'.$class.'.php');
     $object = new $class;
     $object->$param1();
 }, 'GET');
 
-Router::add('/([a-z-0-9-_]*)/([a-z-0-9-]*)', function($class, $param1) {
+Router::add('/([A-Z-a-z-0-9-_]*)/([A-Z-a-z-0-9-]*)', function($class, $param1) {
     include_once('Controller/'.$class.'.php');
     $object = new $class;
     $object->$param1();

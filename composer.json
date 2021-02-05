@@ -7,4 +7,8 @@
         "files": ["Views/Core/Engine.php", "UnitTestFiles/Test/constant.php", "Library/Date_format.php",
                   "Config/Variables.php"]
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> equity-ui

@@ -41,7 +41,7 @@ class Router {
     // The basepath never needs a trailing slash
     // Because the trailing slash will be added using the route expressions
     $basepath = rtrim($basepath, '/');
-
+    
     // Parse current URL
     $parsed_url = parse_url($_SERVER['REQUEST_URI']);
 
