@@ -1,5 +1,9 @@
-# myMVC
+# MyMVC
 Framework to use for Web Development
+
+My motivation to write this piece of code was to make a POC for cloud based accounting software. 
+This structure helps to build a good MVC-structured project.
+It also helps to build code faster and more simply (almost zero learning curve if you know PHP).
 
 
 Command to use this repo into your local: 
